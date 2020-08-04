@@ -5,8 +5,25 @@ import Class, { Schedule } from '../entities/Class';
 import User from '../entities/User';
 import convertHourToMinutes from '../utils/convertHourToMinutes';
 import db from '../database/connection';
+import { Filters } from '../services/ClassService'
 
 export default {
+  async index(req: Request, res: Response) {
+    const filters = req.query as unknown as Filters
+
+    if (!filters.week_day || !filters.subject || !filters.time) {
+      return res.status(400).json({
+        error: 'Missing filters to search'
+      })
+    }
+
+    const timeInMinutes = convertHourToMinutes(filters.time)
+  
+    const classes = await ClassService.getFilteredClasses({...filters, timeInMinutes})
+
+    return res.status(200).json(classes)
+  },
+
   async create(req: Request, res: Response) {
     const { name, avatar, whatsapp, bio }: User = req.body;
     const { subject, cost }: Class = req.body;
