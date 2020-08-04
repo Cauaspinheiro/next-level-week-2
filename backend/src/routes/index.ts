@@ -1,4 +1,5 @@
 import { Router } from "express";
+import classesRoutes from './ClassRoutes'
 
 const routes = Router()
 
@@ -8,5 +9,7 @@ routes.get('/', (req, res) => {
     created_by: 'https://github.com/Cauaspinheiro'
   })
 })
+
+routes.use(classesRoutes)
 
 export default routes
