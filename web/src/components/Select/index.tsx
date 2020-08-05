@@ -22,11 +22,17 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <div className="select-block">
       <label htmlFor={name}>{label}</label>
-      <select id={name} {...selectProps}>
-        <option value="" disabled selected hidden>Selecione uma opção</option>
+      <select value="" id={name} {...selectProps}>
+        <option value="" disabled hidden>
+          Selecione uma opção
+        </option>
 
         {options.map((opt) => {
-          return <option key={opt.value} value={opt.value}>{opt.label}</option>
+          return (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          )
         })}
       </select>
     </div>
