@@ -47,7 +47,7 @@
   margin-top: 2.4rem;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   .page-header {
     height: 340px;
   }
@@ -58,7 +58,7 @@
 
   .page-header .header-content {
     flex: 1;
-    max-width: 740px;
+    max-width: 840px;
     margin: 0 auto;
     padding-bottom: 48px;
     display: flex;
