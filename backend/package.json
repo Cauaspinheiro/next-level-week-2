@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn src/index.ts",
-    "start": "tsc && build/index.js",
     "db:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "db:migrate:make": "knex migrate:make -x ts"
   },

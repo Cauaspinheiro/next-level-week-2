@@ -5,3 +5,5 @@ const routes = Router()
 
 routes.get('/connections', ConnectionsController.index)
 routes.post('/connections', ConnectionsController.create)
+
+export default routes

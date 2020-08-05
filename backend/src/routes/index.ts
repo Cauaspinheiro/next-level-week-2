@@ -1,5 +1,6 @@
 import { Router } from "express";
 import classesRoutes from './ClassRoutes'
+import ConnectionsRoutes from './ConnectionsRoutes'
 
 const routes = Router()
 
@@ -11,5 +12,6 @@ routes.get('/', (req, res) => {
 })
 
 routes.use(classesRoutes)
+routes.use(ConnectionsRoutes)
 
 export default routes
