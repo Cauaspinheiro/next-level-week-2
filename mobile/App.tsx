@@ -1,6 +1,5 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Landing } from './src/pages/Landing'
 import { AppLoading } from 'expo'
 import { Archivo_400Regular, Archivo_700Bold } from '@expo-google-fonts/archivo'
 import {
@@ -8,6 +7,7 @@ import {
   Poppins_600SemiBold,
   useFonts,
 } from '@expo-google-fonts/poppins'
+import { AppStack } from './src/routes/AppStack'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -24,7 +24,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <Landing />
+      <AppStack />
     </>
   )
 }

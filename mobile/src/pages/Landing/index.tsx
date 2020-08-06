@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image as RNImage } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -18,6 +19,15 @@ import giveClassesIcon from '../../assets/images/icons/give-classes.png'
 import heartIcon from '../../assets/images/icons/heart.png'
 
 export function Landing() {
+  const { navigate } = useNavigation()
+
+  function handleNavigateToGiveClassesPage() {
+    navigate('GiveClasses')
+  }
+  function handleNavigateToStudyPage() {
+    navigate('Study')
+  }
+
   return (
     <Container>
       <Image source={landingImg} />
@@ -28,13 +38,13 @@ export function Landing() {
       </Title>
 
       <ButtonsContainer>
-        <Button primary={true}>
+        <Button onPress={handleNavigateToStudyPage} primary={true}>
           <RNImage source={studyIcon}></RNImage>
 
           <ButtonText>Estudar</ButtonText>
         </Button>
 
-        <Button primary={false}>
+        <Button onPress={handleNavigateToGiveClassesPage} primary={false}>
           <RNImage source={giveClassesIcon}></RNImage>
 
           <ButtonText>Dar aulas</ButtonText>
