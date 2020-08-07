@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image as RNImage } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
@@ -17,13 +17,21 @@ import landingImg from '../../assets/images/landing.png'
 import studyIcon from '../../assets/images/icons/study.png'
 import giveClassesIcon from '../../assets/images/icons/give-classes.png'
 import heartIcon from '../../assets/images/icons/heart.png'
+import api from '../../services/api'
 
 export function Landing() {
   const { navigate } = useNavigation()
 
+  const [totalConnections, setTotalConnections] = useState()
+
+  useEffect(() => {
+    api.get('/connections').then(({ data }) => setTotalConnections(data.total))
+  }, [])
+
   function handleNavigateToGiveClassesPage() {
     navigate('GiveClasses')
   }
+
   function handleNavigateToStudyPage() {
     navigate('Study')
   }
@@ -52,7 +60,7 @@ export function Landing() {
       </ButtonsContainer>
 
       <TotalConnections>
-        Total de 285 conexões já realizadas{' '}
+        Total de {totalConnections} conexões já realizadas{' '}
         <RNImage source={heartIcon}></RNImage>
       </TotalConnections>
     </Container>
